@@ -1,9 +1,0 @@
-title: Alaria Dynamics
-description: Defense systems and solutions
-baseurl: ""
-url: "https://alariadynamics.github.io"
-theme: minima
-paginate: 5
-plugins:
-	- jekyll-seo-tag
-	- jekyll-sitemap

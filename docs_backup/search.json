@@ -1,8 +1,0 @@
----
-layout: null
-permalink: /search.json
----
-[{% assign pages_list = site.pages | where_exp: "p","p.url contains '/products/'" %}
-{% for p in pages_list %}
-  {"title": "{{ p.title | escape }}", "url": "{{ site.baseurl | default: '/' }}{{ p.url | remove_first: '/' }}", "excerpt": "{{ p.excerpt | strip_newlines | strip | escape }}" }{% if forloop.last == false %},{% endif %}
-{% endfor %}]
