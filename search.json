@@ -1,0 +1,11 @@
+[
+  {"title":"Home","url":"/","excerpt":""},
+  {"title":"About","url":"/about/","excerpt":""},
+  {"title":"Solutions","url":"/solutions/","excerpt":""},
+  {"title":"Products","url":"/products/","excerpt":""},
+  {"title":"LF-13 Long Fighter","url":"/products/aircraft/lf-13/","excerpt":"Sample product page"},
+  {"title":"Media","url":"/media/","excerpt":""},
+  {"title":"Careers","url":"/careers/","excerpt":""},
+  {"title":"Contact","url":"/contact/","excerpt":""},
+  {"title":"Compliance","url":"/compliance/","excerpt":""}
+]
