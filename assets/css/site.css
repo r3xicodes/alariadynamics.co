@@ -11,6 +11,21 @@ body{font-family:Segoe UI, Roboto, Arial, sans-serif; margin:0; color:#111; back
 .hero{background:linear-gradient(180deg,#072a57 0%,#08356a 60%);color:#fff;padding:64px 0;margin-bottom:24px}
 .hero h1{font-size:36px;margin:0 0 12px}
 .hero p{max-width:720px;line-height:1.6;color:#e6eefc}
+.hero{position:relative;overflow:hidden;padding:96px 0 80px}
+.hero-bg{position:absolute;inset:0;background-image:url('/assets/img/Banner.png');background-size:cover;background-position:center center;transform:scale(1.06);animation:hero-zoom 18s ease-in-out infinite;will-change:transform}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(5,10,20,0.45) 0%, rgba(5,10,20,0.65) 60%);mix-blend-mode:normal}
+.hero-content{position:relative;z-index:2;padding-top:24px;padding-bottom:24px;animation:fade-slide 1s ease both}
+
+@keyframes hero-zoom{
+  0%{transform:scale(1.04) translateY(0)}
+  50%{transform:scale(1.08) translateY(-6px)}
+  100%{transform:scale(1.04) translateY(0)}
+}
+
+@keyframes fade-slide{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:24px}
 .card{background:#fff;border-radius:6px;padding:18px;box-shadow:0 6px 18px rgba(14,31,57,0.08)}
 .card h3{margin-top:0}
@@ -22,4 +37,10 @@ body{font-family:Segoe UI, Roboto, Arial, sans-serif; margin:0; color:#111; back
 @media (max-width:640px){
   .hero h1{font-size:26px}
   .main-nav a{display:none}
+}
+
+/* accessibility: reduce motion preference */
+@media (prefers-reduced-motion:reduce){
+  .hero-bg{animation:none}
+  .hero-content{animation:none}
 }
