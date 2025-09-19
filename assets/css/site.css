@@ -12,7 +12,7 @@ body{font-family:Segoe UI, Roboto, Arial, sans-serif; margin:0; color:#111; back
 .hero h1{font-size:36px;margin:0 0 12px}
 .hero p{max-width:720px;line-height:1.6;color:#e6eefc}
 .hero{position:relative;overflow:hidden;padding:96px 0 80px}
-.hero-bg{position:absolute;inset:0;background-image:url('../img/Banner.png');background-size:cover;background-position:center center;transform:scale(1.06);animation:hero-zoom 18s ease-in-out infinite;will-change:transform}
+.hero-bg{position:absolute;inset:0;background-image:url('.../assets/img/Banner.jpg');background-size:cover;background-position:center center;transform:scale(1.06);animation:hero-zoom 18s ease-in-out infinite;will-change:transform}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(5,10,20,0.45) 0%, rgba(5,10,20,0.65) 60%);mix-blend-mode:normal}
 .hero-content{position:relative;z-index:2;padding-top:24px;padding-bottom:24px;animation:fade-slide 1s ease both}
 
