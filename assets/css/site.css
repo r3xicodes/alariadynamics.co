@@ -20,8 +20,8 @@ body{
 
 /* Hero */
 .hero{position:relative;overflow:hidden;padding:110px 0 90px;margin-bottom:24px;color:#fff}
-.hero--solutions .hero-bg{background-image:url('../assets/img/Banner.jpg')}
-.hero-bg{position:absolute;inset:0;background-image:url('../img/Banner.png');background-size:cover;background-position:center center;transform:scale(1.04);animation:hero-zoom 20s ease-in-out infinite;will-change:transform}
+.hero--solutions .hero-bg{background-image:url('../img/Banner.jpg')}
+.hero-bg{position:absolute;inset:0;background-image:url('../img/Banner.jpg');background-size:cover;background-position:center center;transform:scale(1.04);animation:hero-zoom 20s ease-in-out infinite;will-change:transform}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(3,7,18,0.35) 0%, rgba(3,7,18,0.6) 60%);mix-blend-mode:normal}
 .hero-content{position:relative;z-index:2;padding-top:8px;padding-bottom:8px;animation:fade-slide 700ms cubic-bezier(.2,.9,.3,1) both}
 .hero h1{font-size:48px;margin:0 0 14px;line-height:1.02}
