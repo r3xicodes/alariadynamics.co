@@ -1,3 +1,3 @@
 /* Placeholder custom.css created to satisfy references during QA. Replace with your real custom styles if needed. */
 :root{--accent:#7b2be2}
-body{font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+body{font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin:0;}

@@ -19,9 +19,12 @@ htmlFiles.forEach(f => {
     if (raw.startsWith('#')) continue;
     // strip query string and hash for file existence checks
     const stripped = raw.split('#')[0].split('?')[0];
-    // treat absolute-root paths as relative to workspace root
-    let target = stripped;
-    if (stripped.startsWith('/')) target = stripped.slice(1);
+  // treat absolute-root paths as relative to workspace root
+  let target = stripped;
+  // strip GitHub Pages repo prefix if present
+  const repoPrefix = '/alariadynamics.co';
+  if (target.startsWith(repoPrefix)) target = target.slice(repoPrefix.length);
+  if (target.startsWith('/')) target = target.slice(1);
     const targetPath = path.join(workspace, target);
     if (!fs.existsSync(targetPath)) {
       localMisses.push({ file: f, ref: raw, resolved: targetPath });
