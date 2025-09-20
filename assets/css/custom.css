@@ -10,7 +10,7 @@ body{font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; ma
 	overflow: hidden;
 }
 .feature-hero .feature-media{
-	position: absolute;inset:0;z-index:0;background-image:url('/alariadynamics.co/assets/img/Heading.png');background-size:cover;background-position:center right;filter:brightness(0.45) contrast(1.05);
+	position: absolute;inset:0;z-index:0;background-image:url('/alariadynamics.co/assets/img/Banner.jpg');background-size:cover;background-position:center right;filter:brightness(0.45) contrast(1.05);
 }
 .feature-hero .feature-copy{position:relative;z-index:2;padding:60px 30px;max-width:640px}
 .feature-hero .feature-copy h2{font-size:36px;margin:0 0 12px 0;text-transform:uppercase;letter-spacing:1px}
