@@ -1,9 +1,14 @@
+/*
+  canonicalize-links.js
+  Single-definition canonicalizer to convert relative local links to root-absolute
+  only when the referenced file exists. Avoids duplicate block-scoped declarations
+  so editor TypeScript/TS server diagnostics don't flag redeclarations.
+*/
+
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
-// Canonicalize local relative links to root-absolute where the target exists.
-// This script intentionally uses a single set of block-scoped variables to avoid redeclaration.
 const PROJECT_ROOT = path.resolve(__dirname, '..');
 
 function isSkippable(href) {
@@ -19,14 +24,14 @@ const htmlFiles = glob.sync('**/*.html', { cwd: PROJECT_ROOT, nodir: true, ignor
 let filesChanged = 0;
 let linksChanged = 0;
 
-htmlFiles.forEach((relFile) => {
+for (const relFile of htmlFiles) {
   const absFile = path.resolve(PROJECT_ROOT, relFile);
   let content = fs.readFileSync(absFile, 'utf8');
   const dir = path.dirname(absFile);
 
   const attrRe = /(href|src)=("|')([^"'#?]+)([^"']*)("|')/gi;
-  let match;
   const edits = [];
+  let match;
 
   while ((match = attrRe.exec(content)) !== null) {
     const attr = match[1];
@@ -51,6 +56,7 @@ htmlFiles.forEach((relFile) => {
   }
 
   if (edits.length) {
+    // apply edits from the end so indices remain valid
     edits.sort((a, b) => b.index - a.index).forEach(e => {
       content = content.slice(0, e.index) + e.replacement + content.slice(e.index + e.original.length);
     });
@@ -59,6 +65,6 @@ htmlFiles.forEach((relFile) => {
     linksChanged += edits.length;
     console.log(`Updated ${relFile} -> ${edits.length} link(s)`);
   }
-});
+}
 
 console.log(`Done. Files changed: ${filesChanged}, links updated: ${linksChanged}`);
