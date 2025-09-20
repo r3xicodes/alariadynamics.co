@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/logo.svg">
   <title>Media — Alaria Dynamics</title>
   <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-  <a class="logo" href="/"><span class="site-logo"><img src="/assets/img/Logo.png" alt="Alaria Dynamics"></span></a>
+      <a class="logo" href="/"><span class="site-logo"><img src="/assets/img/logo.svg" alt="Alaria Dynamics logo"></span></a>
       <nav class="main-nav nav">
         <div class="nav-item"><a href="/" data-i18n="nav_home">Home</a></div>
         <div class="nav-item"><a href="/about/index.html" data-i18n="nav_about">About</a></div>
@@ -25,23 +26,40 @@
     <p>Images and 3D assets available for download.</p>
     <div class="media-grid">
       <div class="media-item">
-        <a href="../assets/img/Banner.jpg" target="_blank"><img src="../assets/img/Banner.jpg" alt="Banner" loading="lazy"></a>
+        <a href="../assets/img/Banner.jpg" target="_blank" rel="noopener"><img src="../assets/img/Banner.jpg" alt="Banner" loading="lazy"></a>
         <p>Banner.jpg</p>
       </div>
       <div class="media-item">
-        <a href="../assets/img/FS-22.webp" target="_blank"><img src="../assets/img/FS-22.webp" alt="FS-22" loading="lazy"></a>
+        <a href="../assets/img/FS-22.webp" target="_blank" rel="noopener"><img src="../assets/img/FS-22.webp" alt="FS-22" loading="lazy"></a>
         <p>FS-22.webp</p>
       </div>
       <div class="media-item">
-        <a href="../assets/img/placeholder.svg" target="_blank"><img src="../assets/img/placeholder.svg" alt="placeholder" loading="lazy"></a>
+        <a href="../assets/img/placeholder.svg" target="_blank" rel="noopener"><img src="../assets/img/placeholder.svg" alt="placeholder" loading="lazy"></a>
         <p>placeholder.svg</p>
       </div>
       <div class="media-item">
-        <a href="../assets/img/F152.glb" target="_blank">Download F152.glb</a>
+        <a href="../assets/img/F152.glb" target="_blank" rel="noopener">Download F152.glb</a>
         <p>F152.glb (3D model)</p>
       </div>
     </div>
   </main>
+  <script>
+    // ensure favicon and any legacy PNG logo refs point to the new svg
+    (function(){
+      try{
+        var link = document.querySelector('link[rel="icon"]');
+        if(!link){
+          link = document.createElement('link'); link.rel='icon'; document.head.appendChild(link);
+        }
+        link.type = 'image/svg+xml';
+        link.href = '/assets/img/logo.svg';
+        // replace any img elements that reference Logo.png
+        document.querySelectorAll('img').forEach(function(img){
+          if(img.src && img.src.match(/Logo\.png$/i)) img.src = '/assets/img/logo.svg';
+        });
+      }catch(e){console.warn('logo swap skipped',e)}
+    })();
+  </script>
   <script src="../assets/js/i18n.js"></script>
 </body>
 </html>
