@@ -1,3 +1,42 @@
 /* Placeholder custom.css created to satisfy references during QA. Replace with your real custom styles if needed. */
 :root{--accent:#7b2be2}
-body{font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin:0;}
+body{font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin:0;color:#222}
+
+/* Feature hero (Lockheed-like) */
+.feature-hero {
+	position: relative;
+	color: #fff;
+	padding: 80px 0;
+	overflow: hidden;
+}
+.feature-hero .feature-media{
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background-image: url('/alariadynamics.co/assets/img/Heading.png');
+	background-size: cover;
+	background-position: center right;
+	filter: brightness(0.45) contrast(1.05);
+}
+.feature-hero::before{
+	/* darker gradient on the right for readable white text */
+	content: '';
+	position: absolute; inset:0; z-index:1;
+	background: linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0.65) 100%);
+}
+.feature-hero .feature-copy{position:relative;z-index:2;padding:80px 30px;max-width:720px;margin-left:6%;}
+.feature-hero .feature-copy h2{font-size:56px;margin:0 0 14px 0;text-transform:uppercase;letter-spacing:2px;font-weight:800;line-height:0.95}
+.feature-hero .feature-copy p{font-size:20px;line-height:1.6;opacity:0.95}
+.feature-hero .btn{background:var(--accent);color:#fff;padding:14px 22px;border-radius:4px;text-decoration:none;font-weight:700;display:inline-block}
+.feature-hero .feature-media img{display:none}
+
+@media (max-width:1100px){
+	.feature-hero .feature-copy h2{font-size:40px}
+	.feature-hero .feature-copy{padding:50px 20px}
+}
+@media (max-width:700px){
+	.feature-hero{padding:40px 0}
+	.feature-hero .feature-copy{padding:20px;margin-left:0}
+	.feature-hero .feature-copy h2{font-size:26px}
+	.feature-hero .feature-copy p{font-size:16px}
+}
