@@ -16,14 +16,8 @@ body{font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; ma
 	background-image: url('/alariadynamics.co/assets/img/Heading.png');
 	background-size: cover;
 	background-position: absolute;
-	filter: brightness(0.45) contrast(1.05);
 }
-.feature-hero::before{
-	/* darker gradient on the right for readable white text */
-	content: '';
-	position: absolute; inset:0; z-index:1;
-	background: linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0.65) 100%);
-}
+
 .feature-hero .feature-copy{position:relative;z-index:2;padding:80px 30px;max-width:720px;margin-left:6%;}
 .feature-hero .feature-copy h2{font-size:56px;margin:0 0 14px 0;text-transform:uppercase;letter-spacing:2px;font-weight:800;line-height:0.95}
 .feature-hero .feature-copy p{font-size:20px;line-height:1.6;opacity:0.95}
