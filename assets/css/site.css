@@ -137,3 +137,14 @@ body{
 .viewer-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,7,18,0.6);z-index:120}
 .viewer-overlay .overlay-card{background:var(--card-bg);padding:18px;border-radius:10px;max-width:720px}
 .viewer-overlay.show{display:flex}
+
+/* Hide default scrollbar visually while keeping scroll functionality */
+/* Webkit-based browsers */
+::-webkit-scrollbar{width:0;height:0}
+/* Firefox */
+html{scrollbar-width:none}
+
+/* Typing animation styles */
+.typewriter{font-family:inherit;display:inline-block;white-space:pre-wrap;overflow-wrap:break-word}
+.typewriter .cursor{display:inline-block;width:2px;background:var(--accent);margin-left:6px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
