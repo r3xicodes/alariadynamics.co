@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Product Template — Alaria Dynamics</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
+    <link rel="stylesheet" href="../../assets/css/site.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="logo" href="../../">Alaria Dynamics</a>
+        <nav class="main-nav nav">
+          <!-- ...existing megamenu structure... -->
+        </nav>
+        <div class="header-actions">
+          <form class="search-form" action="/search.html" method="get" role="search">
+            <input type="search" name="q" placeholder="Search site" aria-label="Search site">
+          </form>
+          <div class="lang-toggle" aria-label="Language selector">
+            <button type="button" class="active">EN</button>
+            <button type="button">ES</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="product-hero">
+        <div class="product-media interactive-viewer">
+          <div class="interactive-main">
+            <img src="../../assets/img/placeholder.svg" alt="Product art" id="viewer-main">
+            <button class="hotspot" style="left:40%;top:46%;" data-label="Cockpit" data-content="Advanced heads-up display and sensor suite.">i</button>
+            <button class="hotspot" style="left:66%;top:58%;" data-label="Engine" data-content="High-thrust turbofan with vectoring.">i</button>
+          </div>
+          <div class="interactive-thumbs">
+            <img src="../../assets/img/placeholder.svg" data-src="../../assets/img/placeholder.svg" alt="thumb1">
+            <img src="../../assets/img/placeholder.svg" data-src="../../assets/img/placeholder.svg" alt="thumb2">
+          </div>
+        </div>
+        <aside class="product-specs">
+          <h1>PRODUCT NAME</h1>
+          <p class="meta">Short tagline</p>
+          <ul class="specs-list">
+            <li><strong>Role</strong><span>Multirole</span></li>
+            <li><strong>Max Speed</strong><span>Mach 1.6+</span></li>
+          </ul>
+          <p style="margin-top:12px;"><a class="btn btn--large" href="../../contact/index.html">Request Info</a></p>
+        </aside>
+      </section>
+
+      <section class="container">
+        <h2>Overview</h2>
+        <p>Use this template to create product pages with interactive overlays and hotspots.</p>
+      </section>
+    </main>
+
+    <div class="viewer-overlay"><div class="overlay-card"></div></div>
+    <script src="../../assets/js/interactive.js"></script>
+  </body>
+</html>
