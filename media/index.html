@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" type="image/svg+xml" href="/alariadynamics.co/assets/img/logo.svg">
+  <!-- favicon removed per request to remove logo -->
   <title>Media — Alaria Dynamics</title>
   <link rel="stylesheet" href="/alariadynamics.co/assets/css/site.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="logo" href="/alariadynamics.co/"><span class="site-logo"><img src="/alariadynamics.co/assets/img/logo.svg" alt="Alaria Dynamics logo"></span></a>
+  <a class="logo" href="/alariadynamics.co/" aria-label="Alaria Dynamics home"><span class="site-logo">Alaria Dynamics</span></a>
       <nav class="main-nav nav">
         <div class="nav-item"><a href="/alariadynamics.co/" data-i18n="nav_home">Home</a></div>
         <div class="nav-item"><a href="/alariadynamics.co/about/index.html" data-i18n="nav_about">About</a></div>
@@ -30,7 +30,7 @@
         <p>Banner.jpg</p>
       </div>
       <div class="media-item">
-        <a href="/alariadynamics.co/assets/img/FS-22.webp" target="_blank" rel="noopener"><img src="/alariadynamics.co/assets/img/FS-22.webp" alt="FS-22" loading="lazy"></a>
+  <a href="/alariadynamics.co/assets/img/FS-22.png" target="_blank" rel="noopener"><img src="/alariadynamics.co/assets/img/FS-22.png" alt="FS-22" loading="lazy"></a>
         <p>FS-22.webp</p>
       </div>
       <div class="media-item">
@@ -44,21 +44,7 @@
     </div>
   </main>
   <script>
-    // ensure favicon and any legacy PNG logo refs point to the new svg
-    (function(){
-      try{
-        var link = document.querySelector('link[rel="icon"]');
-        if(!link){
-          link = document.createElement('link'); link.rel='icon'; document.head.appendChild(link);
-        }
-        link.type = 'image/svg+xml';
-        link.href = '/assets/img/logo.svg';
-        // replace any img elements that reference Logo.png
-        document.querySelectorAll('img').forEach(function(img){
-          if(img.src && img.src.match(/Logo\.png$/i)) img.src = '/assets/img/logo.svg';
-        });
-      }catch(e){console.warn('logo swap skipped',e)}
-    })();
+    // favicon/logo handling removed per request
   </script>
   <script src="/alariadynamics.co/assets/js/i18n.js"></script>
 </body>
