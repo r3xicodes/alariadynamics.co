@@ -3,36 +3,31 @@
 
 document.addEventListener('DOMContentLoaded', function(){
   const thumbs = document.querySelectorAll('.interactive-thumbs img');
-  const mainImage = document.querySelector('#viewer-main');
-  const modelViewer = document.querySelector('#viewer-main-3d');
+  const main = document.querySelector('.interactive-main img');
   const hotspots = document.querySelectorAll('.hotspot');
   const overlay = document.querySelector('.viewer-overlay');
   const overlayClose = document.querySelectorAll('.overlay-close');
 
-  function showImage(src){
-    if(modelViewer) modelViewer.style.display = 'none';
-    if(mainImage){ mainImage.style.display = ''; mainImage.src = src; }
-  }
-
-  function showModel(src){
-    if(mainImage) mainImage.style.display = 'none';
-    if(modelViewer){
-      // lazy-load model src if not already set to this
-      if(modelViewer.getAttribute('src') !== src) modelViewer.setAttribute('src', src);
-      modelViewer.style.display = '';
-    }
-  }
-
-  if(thumbs && thumbs.length){
+  if(thumbs && main){
     thumbs.forEach(t => t.addEventListener('click', () => {
-      const type = t.dataset.type || 'image';
-      const src = t.dataset.src || t.src;
-      if(type === 'model'){
-        showModel(src);
-      } else {
-        showImage(src);
-      }
+      main.src = t.dataset.src || t.src;
     }));
+  }
+
+  // Insert an "Order Now" button into product pages dynamically
+  const specs = document.querySelector('.product-specs');
+  if(specs){
+    const titleEl = specs.querySelector('h1');
+    const productName = titleEl ? titleEl.textContent.trim() : document.title;
+    const orderLink = document.createElement('a');
+    orderLink.className = 'btn btn--secondary';
+    orderLink.href = `/products/ordering/index.html?add=${encodeURIComponent(productName)}`;
+    orderLink.textContent = 'Order Now';
+    orderLink.setAttribute('data-i18n','order_now');
+    // append after the primary CTA if exists
+    const primaryCTA = specs.querySelector('.btn--large');
+    if(primaryCTA) primaryCTA.insertAdjacentElement('afterend', orderLink);
+    else specs.appendChild(orderLink);
   }
 
   hotspots.forEach(h => h.addEventListener('click', (e) => {
@@ -41,14 +36,9 @@ document.addEventListener('DOMContentLoaded', function(){
     if(overlay){
       overlay.querySelector('.overlay-card').innerHTML = `<h3>${label}</h3><p>${content}</p><p><button class="overlay-close">Close</button></p>`;
       overlay.classList.add('show');
-      const closeBtn = overlay.querySelector('.overlay-close');
-      if(closeBtn) closeBtn.addEventListener('click', () => overlay.classList.remove('show'));
+      overlay.querySelector('.overlay-close').addEventListener('click', () => overlay.classList.remove('show'));
     }
   }));
 
   if(overlayClose) overlayClose.forEach(b => b.addEventListener('click', () => overlay.classList.remove('show')));
-
-  // initial state: ensure image is visible and model is hidden
-  if(modelViewer) modelViewer.style.display = 'none';
-  if(mainImage) mainImage.style.display = '';
 });

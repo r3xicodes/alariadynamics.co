@@ -48,12 +48,20 @@
     <main class="container">
       <h1>Ordering</h1>
       <p>Use this page to submit ordering requests or procurement inquiries. The form below will collect your details and routing information.</p>
+      <section class="ordering-flow">
+        <h2>Your Cart</h2>
+        <div id="cart-container"></div>
+        <p class="muted">Add products from product pages using the <strong>Order Now</strong> button; items will appear here. Use <em>Open Ordering Form</em> to open the procurement form with a cart summary or copy it to your clipboard.</p>
+      </section>
 
-      <div class="embed-wrap">
-        <iframe src="https://forms.gle/aoQkRM8kt3a92Law5" title="Ordering form" loading="lazy"></iframe>
-      </div>
-
-      <p>If the form doesn't load, <a href="https://forms.gle/aoQkRM8kt3a92Law5" target="_blank" rel="noopener noreferrer">open the ordering form in a new tab</a>.</p>
+      <section style="margin-top:18px;">
+        <h2>Ordering Form</h2>
+        <p>When you're ready, open the ordering form to submit your procurement request.</p>
+        <div class="embed-wrap">
+          <iframe src="https://forms.gle/aoQkRM8kt3a92Law5" title="Ordering form" loading="lazy"></iframe>
+        </div>
+        <p>If the form doesn't load, <a href="https://forms.gle/aoQkRM8kt3a92Law5" target="_blank" rel="noopener noreferrer">open the ordering form in a new tab</a>.</p>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -61,5 +69,15 @@
         <p>&copy; 2025 Alaria Dynamics. All rights reserved.</p>
       </div>
     </footer>
+    <script src="../../assets/js/cart.js"></script>
+    <script>
+      // render cart on load
+      document.addEventListener('DOMContentLoaded', function(){
+        const container = document.getElementById('cart-container');
+        if(container && window.SimpleCart) window.SimpleCart.render(container);
+        // re-render on storage events
+        window.addEventListener('storage', () => { if(window.SimpleCart) window.SimpleCart.render(container); });
+      });
+    </script>
   </body>
 </html>

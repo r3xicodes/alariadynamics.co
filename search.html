@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Search — Alaria Dynamics</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="/">Alaria Dynamics</a>
+      <nav class="main-nav nav">
+        <!-- ...existing nav... -->
+      </nav>
+      <div class="header-actions">
+        <form id="search-form" class="search-form" action="/search.html" method="get" role="search">
+          <input id="search-query" type="search" name="q" placeholder="Search site" aria-label="Search site">
+          <button class="btn" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Search</h1>
+    <div id="search-results"></div>
+  </main>
+
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/i18n.js"></script>
+</body>
+</html>
