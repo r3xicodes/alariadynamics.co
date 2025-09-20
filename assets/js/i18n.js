@@ -36,6 +36,7 @@
       footer_cookies: 'Cookies',
       btn_search: 'Search',
       btn_sign_up: 'Sign up now',
+  btn_express_interest: 'Express interest',
       request_info: 'Request Info',
       learn_more: 'Learn more',
       coming_soon: 'Coming soon',
@@ -74,6 +75,7 @@
       footer_cookies: 'Cookies',
       btn_search: 'Buscar',
       btn_sign_up: 'Regístrate',
+  btn_express_interest: 'Expresar interés',
       request_info: 'Solicitar información',
       learn_more: 'Más información',
       coming_soon: 'Próximamente',
@@ -112,6 +114,7 @@
       footer_cookies: 'Cookies',
       btn_search: 'Rechercher',
       btn_sign_up: 'Inscrivez-vous',
+  btn_express_interest: 'Exprimer votre intérêt',
       request_info: 'Demander des informations',
       learn_more: 'En savoir plus',
       coming_soon: 'Bientôt disponible',
@@ -150,6 +153,7 @@
       footer_cookies: 'Cookies',
       btn_search: '搜索',
       btn_sign_up: '注册',
+  btn_express_interest: '表示兴趣',
       request_info: '索取信息',
       learn_more: '了解更多',
       coming_soon: '敬请期待',
@@ -210,18 +214,27 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    // wire language buttons
+    // wire language toggle as a click dropdown (persistent until click outside)
     document.querySelectorAll('.lang-toggle').forEach(toggle => {
-      // create buttons if empty
-      if(!toggle.querySelectorAll('button').length){
+      try{ toggle.setAttribute('aria-label', dict.toggle_lang || translations[defaultLang].toggle_lang); }catch(e){}
+
+      // if toggle is just a container, create a dropdown control
+      if(!toggle.querySelector('.lang-selected')){
+        const selected = document.createElement('div'); selected.className='lang-selected'; selected.tabIndex = 0; selected.textContent = (getLang()||'en').toUpperCase(); selected.style.cursor='pointer'; selected.setAttribute('aria-haspopup','listbox');
+        const list = document.createElement('div'); list.className='lang-list'; list.setAttribute('role','listbox'); list.style.display='none'; list.style.position='absolute'; list.style.background='var(--card-bg)'; list.style.border='1px solid rgba(12,18,30,0.06)'; list.style.borderRadius='8px'; list.style.padding='6px'; list.style.boxShadow='0 10px 30px rgba(12,20,40,0.06)';
         ['en','es','fr','zh'].forEach(code => {
-          const b=document.createElement('button'); b.type='button'; b.textContent=code.toUpperCase(); b.dataset.lang=code; if(code===getLang()) b.classList.add('active'); toggle.appendChild(b);
+          const item = document.createElement('div'); item.className='lang-item'; item.textContent = code.toUpperCase(); item.dataset.lang = code; item.style.padding='6px 10px'; item.style.cursor='pointer'; item.style.fontWeight = (getLang()===code?'700':'600');
+          item.addEventListener('click', ()=>{ setLang(code); selected.textContent = code.toUpperCase(); list.style.display='none'; toggle.querySelectorAll('.lang-item').forEach(x=>x.style.fontWeight=(x.dataset.lang===code?'700':'600')); });
+          list.appendChild(item);
         });
+        toggle.style.position='relative'; toggle.appendChild(selected); toggle.appendChild(list);
+
+        // open/close on click
+        selected.addEventListener('click', (e)=>{ const l = toggle.querySelector('.lang-list'); l.style.display = l.style.display==='none'?'block':'none'; e.stopPropagation(); });
+
+        // close when clicking outside
+        document.addEventListener('click', function(){ const l = toggle.querySelector('.lang-list'); if(l) l.style.display='none'; });
       }
-      toggle.querySelectorAll('button').forEach(b => b.addEventListener('click', ()=>{
-        const lang = b.dataset.lang; if(!lang) return; setLang(lang);
-        toggle.querySelectorAll('button').forEach(x => x.classList.toggle('active', x===b));
-      }));
     });
     applyLang(getLang());
   });

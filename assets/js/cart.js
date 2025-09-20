@@ -63,30 +63,14 @@
     container.appendChild(list);
 
     const actions = document.createElement('div'); actions.className='cart-actions';
-    // i18n-friendly labels
-    const lang = (window.AdaraI18n && window.AdaraI18n.getLang) ? window.AdaraI18n.getLang() : 'en';
-    const translations = (window.AdaraI18n && window.AdaraI18n._dict) || {};
-    const t = key => {
-      try{
-        if(window.AdaraI18n && window.AdaraI18n.getLang){
-          const l = window.AdaraI18n.getLang();
-          // translations are managed inside i18n.js; fallback to default map
-          const map = {
-            Clear: 'Clear',
-            'Copy Summary': 'Copy Summary',
-            'Open Ordering Form': 'Open Ordering Form'
-          };
-          return (window.AdaraI18n && window.AdaraI18n._dict && window.AdaraI18n._dict[l] && window.AdaraI18n._dict[l][key.toLowerCase().replace(/\s+/g,'_')]) || map[key] || key;
-        }
-      }catch(e){}
-      return key;
-    };
+    // i18n-friendly labels via runtime helper
+    const t = key => (window.AdaraI18n && window.AdaraI18n.t) ? window.AdaraI18n.t(key) : key;
 
-    const clearBtn = document.createElement('button'); clearBtn.className='btn'; clearBtn.textContent=t('Clear');
+  const clearBtn = document.createElement('button'); clearBtn.className='btn'; clearBtn.textContent=t('clear');
     clearBtn.addEventListener('click', () => { clear(); render(container); });
-    const copyBtn = document.createElement('button'); copyBtn.className='btn btn--secondary'; copyBtn.textContent='Copy Summary';
+  const copyBtn = document.createElement('button'); copyBtn.className='btn btn--secondary'; copyBtn.textContent=t('copy_summary');
     copyBtn.addEventListener('click', () => { copyToClipboard(cartSummary()); });
-    const openFormBtn = document.createElement('button'); openFormBtn.className='btn btn--primary'; openFormBtn.textContent=t('Open Ordering Form');
+  const openFormBtn = document.createElement('button'); openFormBtn.className='btn btn--primary'; openFormBtn.textContent=t('open_ordering_form');
     openFormBtn.addEventListener('click', () => { window.open(orderingFormUrlWithSummary(), '_blank'); });
     actions.appendChild(clearBtn); actions.appendChild(copyBtn); actions.appendChild(openFormBtn);
     container.appendChild(actions);
@@ -122,6 +106,46 @@
     return base + '?summary=' + encodeURIComponent(summary);
   }
 
+  // Parse a Google Form prefill URL and extract entry IDs into a mapping
+  // Example input: https://docs.google.com/forms/d/e/FORM_ID/viewform?usp=pp_url&entry.123456=...&entry.234567=...
+  function parseGoogleFormPrefillUrl(url){
+    try{
+      const u = new URL(url);
+      const params = new URLSearchParams(u.search);
+      const map = {};
+      for(const [k,v] of params.entries()){
+        if(k.startsWith('entry.')){
+          // heuristics: if the field label contains 'cart' or 'summary' assume it's the cart summary
+          const key = (v && /cart|summary|order/i.test(v)) ? 'cart_summary' : 'field_'+k.replace(/entry\./,'');
+          map[key] = k; // map logical name -> entry.X
+        }
+      }
+      return Object.keys(map).length ? map : null;
+    }catch(e){ return null; }
+  }
+
+  // Persist and restore mappings under a simple key
+  const PREFILL_KEY = 'adara_prefill_v1';
+
+  function setFormPrefillFromUrl(input){
+    // Accept either a mapping object or a URL string. Persist mapping to localStorage.
+    if(!input) return;
+    if(typeof input === 'string'){
+      const parsed = parseGoogleFormPrefillUrl(input);
+      if(parsed){
+        window.SimpleCart._prefillMap = parsed;
+        try{ localStorage.setItem(PREFILL_KEY, JSON.stringify({ url: input, map: parsed })); }catch(e){}
+      }
+    }else if(typeof input === 'object'){
+      window.SimpleCart._prefillMap = input;
+      try{ localStorage.setItem(PREFILL_KEY, JSON.stringify({ url: null, map: input })); }catch(e){}
+    }
+  }
+
+  function getStoredPrefill(){
+    try{ const v = localStorage.getItem(PREFILL_KEY); return v ? JSON.parse(v) : null; }catch(e){ return null; }
+  }
+
   function copyToClipboard(text){
     if(!text) return;
     if(navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text).then(()=>alert('Cart copied to clipboard'));
@@ -129,7 +153,13 @@
   }
 
   // expose global helpers
-  window.SimpleCart = { addItem, removeItem, updateQty, clear, getCart, render, cartSummary, setFormPrefillMap: (m)=>{ window.SimpleCart._prefillMap = m; } };
+  window.SimpleCart = { addItem, removeItem, updateQty, clear, getCart, render, cartSummary, setFormPrefillMap: (m)=>{ window.SimpleCart._prefillMap = m; }, parseGoogleFormPrefillUrl, setFormPrefillFromUrl, getStoredPrefill };
+
+  // restore persisted mapping on load if present
+  try{
+    const stored = getStoredPrefill();
+    if(stored && stored.map){ window.SimpleCart._prefillMap = stored.map; }
+  }catch(e){}
 
   // if ordering page is loaded with ?add=... then add that item
   try{

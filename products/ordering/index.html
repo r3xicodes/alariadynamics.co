@@ -62,6 +62,17 @@
         </div>
         <p>If the form doesn't load, <a href="https://forms.gle/aoQkRM8kt3a92Law5" target="_blank" rel="noopener noreferrer">open the ordering form in a new tab</a>.</p>
       </section>
+    
+      <section style="margin-top:18px;">
+        <h3>Admin: Wire Google Form Prefill (optional)</h3>
+        <p class="muted">Paste a Google Form <em>prefill</em> URL here and click <strong>Apply</strong> to automatically extract the entry.* parameter names used to prefill fields. This is an admin convenience and not visible to end users.</p>
+        <textarea id="prefill-url" placeholder="Paste Google Form prefill URL here" style="width:100%;min-height:60px"></textarea>
+        <div style="margin-top:8px;">
+          <button id="apply-prefill" class="btn">Apply</button>
+          <button id="clear-prefill" class="btn btn--secondary" style="margin-left:8px">Clear</button>
+          <span id="prefill-status" class="muted" style="margin-left:12px"></span>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -85,6 +96,43 @@
         // re-render on storage events
         window.addEventListener('storage', () => { if(window.SimpleCart) window.SimpleCart.render(container); });
       });
+    </script>
+    <script>
+      // Wire admin prefill UI
+      (function(){
+        const textarea = document.getElementById('prefill-url');
+        const btn = document.getElementById('apply-prefill');
+        const status = document.getElementById('prefill-status');
+        if(!textarea || !btn || !status || !window.SimpleCart) return;
+        btn.addEventListener('click', function(){
+          const url = textarea.value && textarea.value.trim();
+          if(!url) { status.textContent = 'Paste a prefill URL first.'; return; }
+              try{
+                window.SimpleCart.setFormPrefillFromUrl(url);
+                if(window.SimpleCart._prefillMap){
+                  status.textContent = 'Prefill mapping set: ' + Object.keys(window.SimpleCart._prefillMap).join(', ');
+                }else{
+                  status.textContent = 'No entry.* parameters found in URL.';
+                }
+              }catch(e){ status.textContent = 'Error parsing URL'; }
+        });
+            // populate if stored
+            try{
+              const stored = window.SimpleCart && window.SimpleCart.getStoredPrefill && window.SimpleCart.getStoredPrefill();
+              if(stored){
+                if(stored.url) textarea.value = stored.url;
+                if(stored.map) status.textContent = 'Stored mapping: ' + Object.keys(stored.map).join(', ');
+              }
+            }catch(e){}
+
+            // clear stored mapping
+            const clearBtn = document.getElementById('clear-prefill');
+            if(clearBtn){
+              clearBtn.addEventListener('click', function(){
+                try{ localStorage.removeItem('adara_prefill_v1'); window.SimpleCart._prefillMap = null; status.textContent = 'Prefill cleared.'; textarea.value=''; }catch(e){ status.textContent='Clear failed'; }
+              });
+            }
+      })();
     </script>
   </body>
 </html>

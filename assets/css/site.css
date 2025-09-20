@@ -17,7 +17,9 @@ body{
 .logo{font-weight:800;color:var(--accent);text-decoration:none;font-size:20px;letter-spacing:0.2px}
 .site-logo{display:inline-block;vertical-align:middle;height:36px}
 .site-logo img{height:36px;width:auto;display:block}
-.main-nav a{margin-left:20px;color:#0f1724;text-decoration:none;font-weight:600;opacity:0.9}
+.main-nav{display:flex;align-items:center}
+.main-nav .nav-item{display:inline-flex;align-items:center}
+.main-nav a{margin-left:20px;color:#0f1724;text-decoration:none;font-weight:600;opacity:0.9;line-height:1}
 .main-nav a:hover{color:var(--accent)}
 
 /* Dropdown navigation */
@@ -49,6 +51,12 @@ body{
 .lang-toggle{display:flex;align-items:center;gap:6px}
 .lang-toggle button{background:transparent;border:1px solid rgba(12,18,30,0.06);padding:6px 8px;border-radius:6px;cursor:pointer}
 .lang-toggle button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Language dropdown styles (for click dropdown) */
+.lang-selected{background:transparent;border:1px solid rgba(12,18,30,0.06);padding:6px 10px;border-radius:6px;display:inline-flex;align-items:center}
+.lang-list{min-width:120px}
+.lang-item{padding:6px 10px}
+.lang-item:hover{background:rgba(11,61,145,0.04);color:var(--accent)}
 
 @media (max-width:900px){
   .search-form input{width:110px}
