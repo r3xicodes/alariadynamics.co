@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 512 512" aria-labelledby="title desc" role="img">
+  <title>Alaria Dynamics</title>
+  <desc>Stylized A D mark in teal</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#0d6b74" />
+      <stop offset="1" stop-color="#0b5560" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="48" fill="transparent"/>
+  <g transform="translate(56,40) scale(0.8)" fill="url(#g)">
+    <path d="M56 8 L120 312 C180 420 260 480 260 480 C200 440 96 312 12 168 L56 8 Z" />
+    <path d="M320 64 C380 96 420 120 452 156 C488 196 420 272 360 328 C320 364 280 392 280 392 C320 348 408 272 448 212 C488 152 392 120 320 64 Z" />
+  </g>
+</svg>
