@@ -1,4 +1,4 @@
-// Simple client-side i18n
+﻿// Simple client-side i18n
 (function(){
   const KEY = 'adara_lang_v1';
   const defaultLang = 'en';
@@ -244,3 +244,4 @@
 
   window.AdaraI18n = { setLang, getLang, t, _dict: translations };
 })();
+

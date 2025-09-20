@@ -1,4 +1,4 @@
-:root{
+﻿:root{
   --accent:#0b3d91;
   --muted:#6b7280;
   --bg:#f6f7f9;
@@ -215,3 +215,4 @@ html{scrollbar-width:none}
   .footer-top-grid{gap:12px}
   .footer-top .footer-newsletter{padding-top:12px}
 }
+

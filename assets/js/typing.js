@@ -1,4 +1,4 @@
-// Typing-on-scroll animation
+﻿// Typing-on-scroll animation
 // Usage: add a container with class `type-on-scroll` and data-text="Text to type"
 // It will type when scrolled into view and reset on page reload.
 
@@ -41,3 +41,4 @@
     });
   });
 })();
+

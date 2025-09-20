@@ -1,4 +1,4 @@
-// Simple client-side cart using localStorage
+﻿// Simple client-side cart using localStorage
 // API:
 // - addItem(name)
 // - getCart() => [{name, qty}]
@@ -171,3 +171,4 @@
 })();
 
 function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[c]); }
+

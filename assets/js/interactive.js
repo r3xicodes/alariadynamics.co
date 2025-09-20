@@ -1,4 +1,4 @@
-// Lightweight interactive viewer for product pages
+﻿// Lightweight interactive viewer for product pages
 // Features: thumbnail switch, hotspots, overlay info
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -43,3 +43,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
   if(overlayClose) overlayClose.forEach(b => b.addEventListener('click', () => overlay.classList.remove('show')));
 });
+

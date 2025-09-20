@@ -1,4 +1,4 @@
-// Lightweight client-side search using Fuse.js
+﻿// Lightweight client-side search using Fuse.js
 (async function(){
   // load Fuse from CDN
   const fuseUrl = 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js';
@@ -43,3 +43,4 @@
   const form = document.getElementById('search-form');
   if(form) form.addEventListener('submit', function(e){ e.preventDefault(); const v = queryInput.value.trim(); if(v) { history.replaceState(null,'', '?q='+encodeURIComponent(v)); doSearch(v); } });
 })();
+
