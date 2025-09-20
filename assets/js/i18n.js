@@ -180,7 +180,7 @@
     const navMap = {
       '.main-nav .nav-item:nth-child(1) a': 'nav_home',
       '.main-nav .nav-item:nth-child(2) a': 'nav_about',
-      '.main-nav .nav-item:nth-child(3) a': 'nav_products',
+      '.main-nav .nav-item:nth-child(3) a': 'nav_solutions', // was 'nav_products' but changed to 'Solutions' in 2024 redesign
       '.main-nav .nav-item:nth-child(4) a': null, // megamenu title left intact
       '.main-nav .nav-item:nth-child(5) a': 'nav_media',
       '.main-nav .nav-item:nth-child(6) a': 'nav_careers',
