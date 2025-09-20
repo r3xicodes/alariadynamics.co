@@ -71,6 +71,13 @@
     </footer>
     <script src="../../assets/js/cart.js"></script>
     <script>
+      // Developer note: to enable prefilled ordering submissions, supply the Google Form entry IDs
+      // Example mapping: { cart_summary: 'entry.123456' }
+      // Replace 'entry.123456' with the real field ID from the form prefill URL.
+      if(window.SimpleCart){
+        // placeholder mapping; update with real entry IDs when available
+        window.SimpleCart.setFormPrefillMap({ cart_summary: 'entry.123456' });
+      }
       // render cart on load
       document.addEventListener('DOMContentLoaded', function(){
         const container = document.getElementById('cart-container');
