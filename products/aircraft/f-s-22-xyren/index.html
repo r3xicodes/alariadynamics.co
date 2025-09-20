@@ -55,10 +55,14 @@
 
     <main class="container">
       <section class="product-hero">
-        <div class="product-media">
-          <div style="text-align:center;color:#dfeeff;">
-            <img src="../../../assets/img/placeholder.svg" alt="F/S-22 Xyren - profile" style="max-width:520px;">
-            <div style="margin-top:12px;font-size:13px;opacity:0.85;">Click and drag to rotate (interactive model placeholder)</div>
+        <div class="product-media interactive-viewer">
+          <div class="interactive-main" style="text-align:center;color:#dfeeff;">
+            <img src="../../../assets/img/FS-22.webp" alt="F/S-22 Xyren - profile" id="viewer-main" style="max-width:520px;">
+          </div>
+          <div style="text-align:center;margin-top:8px;font-size:13px;opacity:0.85;">Click thumbnails to switch views</div>
+          <div class="interactive-thumbs" style="justify-content:center;margin-top:8px;">
+            <img src="../../../assets/img/FS-22.webp" data-src="../../../assets/img/FS-22.webp" alt="F/S-22 thumbnail" loading="lazy">
+            <img src="../../../assets/img/placeholder.svg" data-src="../../../assets/img/placeholder.svg" alt="Alternate view thumbnail" loading="lazy">
           </div>
         </div>
         <aside class="product-specs">
