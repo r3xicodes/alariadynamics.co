@@ -1,11 +1,137 @@
 [
-  {"title":"Home","url":"/","excerpt":""},
-  {"title":"About","url":"/about/","excerpt":""},
-  {"title":"Solutions","url":"/solutions/","excerpt":""},
-  {"title":"Products","url":"/products/","excerpt":""},
-  {"title":"LF-13 Long Fighter","url":"/products/aircraft/lf-13/","excerpt":"Sample product page"},
-  {"title":"Media","url":"/media/","excerpt":""},
-  {"title":"Careers","url":"/careers/","excerpt":""},
-  {"title":"Contact","url":"/contact/","excerpt":""},
-  {"title":"Compliance","url":"/compliance/","excerpt":""}
+  {
+    "title": "Alaria Dynamics",
+    "url": "/index.html",
+    "excerpt": "Alaria Dynamics delivers advanced platforms and integrated solutions across air, land, sea, space and cyber domains. Explore our capabilities and product portfolio."
+  },
+  {
+    "title": "Products — Alaria Dynamics",
+    "url": "/products/index.html",
+    "excerpt": "Explore our major product families and the classes within each."
+  },
+  {
+    "title": "Aircraft — Products",
+    "url": "/products/aircraft/index.html",
+    "excerpt": "Classes and examples: LF-13 Long Fighter, SR-21 Stealth Recon, V-TOL Raven."
+  },
+  {
+    "title": "LF-13 Long Fighter — Alaria Dynamics",
+    "url": "/products/aircraft/lf-13/index.html",
+    "excerpt": "The LF-13 is a fictional sample entry used to demonstrate the product page layout. All data is illustrative and for site-structure demonstration only."
+  },
+  {
+    "title": "F/S-22 Xyren — Alaria Dynamics",
+    "url": "/products/aircraft/f-s-22-xyren/index.html",
+    "excerpt": "The Xyren integrates low observable shaping with modern sensors and advanced electronic warfare to provide survivable, networked combat capability."
+  },
+  {
+    "title": "SR-21 Stealth Recon — Alaria Dynamics",
+    "url": "/products/aircraft/sr-21/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "V-TOL Raven — Alaria Dynamics",
+    "url": "/products/aircraft/v-tol-raven/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "Naval — Products",
+    "url": "/products/naval/index.html",
+    "excerpt": "Naval platforms including carriers and littoral combat ships: Aurelia, Keelhound."
+  },
+  {
+    "title": "Aurelia Carrier — Alaria Dynamics",
+    "url": "/products/naval/aurelia/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "Keelhound — Alaria Dynamics",
+    "url": "/products/naval/keelhound/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "Land Systems — Products",
+    "url": "/products/land/index.html",
+    "excerpt": "Land systems: Valkyra MBT-9 (main battle tank), Strider APC (armored personnel carrier)."
+  },
+  {
+    "title": "Valkyra MBT-9 — Alaria Dynamics",
+    "url": "/products/land/valkyra-mbt-9/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "Strider APC — Alaria Dynamics",
+    "url": "/products/land/strider-apc/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "Sensors — Products",
+    "url": "/products/sensors/index.html",
+    "excerpt": "Electro-optical, radar, and SIGINT sensors: Aegis RF (AESA radar), Nightingale (EO/IR)."
+  },
+  {
+    "title": "Aegis RF — Alaria Dynamics",
+    "url": "/products/sensors/aegis-rf/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "Nightingale — Alaria Dynamics",
+    "url": "/products/sensors/nightingale/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "Weapons — Products",
+    "url": "/products/weapons/index.html",
+    "excerpt": "Precision munitions and loitering weapons: Hawkstrike, Falcon Loiter."
+  },
+  {
+    "title": "Hawkstrike — Alaria Dynamics",
+    "url": "/products/weapons/hawkstrike/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "Falcon Loiter — Alaria Dynamics",
+    "url": "/products/weapons/falcon-loiter/index.html",
+    "excerpt": "Placeholder product page."
+  },
+  {
+    "title": "Ordering — Alaria Dynamics",
+    "url": "/products/ordering/index.html",
+    "excerpt": "Use this page to submit ordering requests or procurement inquiries. The form below will collect your details and routing information."
+  },
+  {
+    "title": "About — Alaria Dynamics",
+    "url": "/about/index.html",
+    "excerpt": "Alaria Dynamics is a mission-focused systems integrator and platform developer delivering advanced defense capability across air, land and sea domains."
+  },
+  {
+    "title": "Contact — Alaria Dynamics",
+    "url": "/contact/index.html",
+    "excerpt": "Use Formspree or Netlify Forms for contact forms. Email: contact@alariadynamics.example"
+  },
+  {
+    "title": "Media — Alaria Dynamics",
+    "url": "/media/index.html",
+    "excerpt": "Images and 3D assets available for download."
+  },
+  {
+    "title": "Solutions — Alaria Dynamics",
+    "url": "/solutions/index.html",
+    "excerpt": "Delivering secure platforms, resilient communications, and mission-focused integration for air, land, sea, space and cyber."
+  },
+  {
+    "title": "Careers — Alaria Dynamics",
+    "url": "/careers/index.html",
+    "excerpt": "Alaria Dynamics builds multidisciplinary teams across engineering, systems integration, sustainment, and support."
+  },
+  {
+    "title": "Search — Alaria Dynamics",
+    "url": "/search.html",
+    "excerpt": "Search the site for products, solutions, media, and contact information."
+  },
+  {
+    "title": "Product Template — Alaria Dynamics",
+    "url": "/products/product-template.html",
+    "excerpt": "Template for product pages with interactive overlays and hotspot descriptions."
+  }
 ]

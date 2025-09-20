@@ -99,7 +99,7 @@ body{
 .card h3{margin-top:0}
 .product-images img{max-width:100%;height:auto;border-radius:8px}
 .meta{color:var(--muted);margin-top:0}
-.site-footer{border-top:1px solid rgba(12,18,30,0.04);padding:36px 0;margin-top:48px;text-align:center;color:var(--muted);background:transparent}
+.site-footer{border-top:1px solid rgba(12,18,30,0.04);padding:36px 0;margin-top:48px;color:var(--muted);background:transparent}
 .btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(11,61,145,0.12);transition:transform .18s ease,box-shadow .18s ease}
 .btn:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(11,61,145,0.14)}
 .btn--large{padding:14px 22px;font-size:16px}
@@ -155,24 +155,55 @@ html{scrollbar-width:none}
 .site-footer{margin-top:48px}
 .site-footer .footer-top{background:#040404;color:#fff;padding:48px 0}
 .footer-top-grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+.footer-top-grid .footer-columns{display:flex;gap:40px;flex-wrap:wrap}
 .footer-top h4{color:#fff;margin:0 0 12px;font-size:14px}
 .footer-columns{display:flex;gap:40px}
 .footer-columns .col{min-width:140px}
-.footer-columns a{display:block;color:rgba(255,255,255,0.88);text-decoration:none;padding:6px 0}
+.footer-columns a{display:block;color:rgba(255,255,255,0.92);text-decoration:none;padding:6px 0}
 .footer-columns a:hover{color:var(--accent)}
 .footer-newsletter h3{font-size:20px;margin:0 0 10px}
-.footer-newsletter p{opacity:0.85;max-width:320px}
+.footer-newsletter p{opacity:0.88;max-width:360px}
 .footer-newsletter .btn{background:#1f66c8}
+
+/* Better stacking & spacing on small screens */
+@media (max-width:900px){
+  .footer-top-grid{grid-template-columns:1fr;gap:18px}
+  .footer-top-grid .footer-columns{flex-direction:row;gap:18px}
+  .footer-newsletter{padding-top:6px}
+}
 
 .site-footer .footer-bottom{background:#f3f3f3;color:#222;padding:22px 0;border-top:1px solid rgba(12,18,30,0.04)}
 .footer-bottom-grid{display:grid;grid-template-columns:220px 1fr 360px 160px;gap:18px;align-items:center}
 .footer-logo{max-width:140px}
-.footer-bottom .copyright{color:var(--muted)}
+.footer-logo img{max-width:100%;height:auto;display:block}
+.footer-bottom .copyright{color:var(--muted);text-align:left}
 .footer-legal a{display:block;color:var(--muted);text-decoration:none;padding:6px 0}
-.footer-stock{font-family:monospace;text-align:center}
+.footer-stock{font-family:monospace;text-align:left}
 .footer-social a{margin-left:8px;color:var(--muted);text-decoration:none}
+
+/* make bottom grid flow better on narrow screens */
+@media (max-width:900px){
+  .footer-bottom-grid{grid-template-columns:1fr;gap:10px;align-items:start}
+  .footer-bottom-grid > *{text-align:left}
+  .footer-social{margin-top:6px}
+}
+
+@media (max-width:480px){
+  .footer-bottom-grid{gap:8px}
+  .site-footer .footer-top{padding:28px 0}
+  .footer-top-grid{gap:12px}
+  .footer-top .footer-newsletter{padding-top:12px}
+  .footer-logo{max-width:120px}
+}
 
 @media (max-width:900px){
   .footer-top-grid{grid-template-columns:1fr}
   .footer-bottom-grid{grid-template-columns:1fr}
+}
+
+/* small devices: tighten padding for footer to reduce overflow */
+@media (max-width:480px){
+  .site-footer .footer-top{padding:28px 0}
+  .footer-top-grid{gap:12px}
+  .footer-top .footer-newsletter{padding-top:12px}
 }

@@ -22,8 +22,9 @@ document.addEventListener('DOMContentLoaded', function(){
     const orderLink = document.createElement('a');
     orderLink.className = 'btn btn--secondary';
     orderLink.href = `/products/ordering/index.html?add=${encodeURIComponent(productName)}`;
-    orderLink.textContent = 'Order Now';
-    orderLink.setAttribute('data-i18n','order_now');
+  // prefer runtime translation helper if available
+  orderLink.setAttribute('data-i18n','order_now');
+  try{ orderLink.textContent = (window.AdaraI18n && typeof window.AdaraI18n.t === 'function') ? window.AdaraI18n.t('order_now') : 'Order Now'; }catch(e){ orderLink.textContent = 'Order Now'; }
     // append after the primary CTA if exists
     const primaryCTA = specs.querySelector('.btn--large');
     if(primaryCTA) primaryCTA.insertAdjacentElement('afterend', orderLink);

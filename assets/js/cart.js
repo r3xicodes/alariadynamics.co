@@ -63,11 +63,30 @@
     container.appendChild(list);
 
     const actions = document.createElement('div'); actions.className='cart-actions';
-    const clearBtn = document.createElement('button'); clearBtn.className='btn'; clearBtn.textContent='Clear';
+    // i18n-friendly labels
+    const lang = (window.AdaraI18n && window.AdaraI18n.getLang) ? window.AdaraI18n.getLang() : 'en';
+    const translations = (window.AdaraI18n && window.AdaraI18n._dict) || {};
+    const t = key => {
+      try{
+        if(window.AdaraI18n && window.AdaraI18n.getLang){
+          const l = window.AdaraI18n.getLang();
+          // translations are managed inside i18n.js; fallback to default map
+          const map = {
+            Clear: 'Clear',
+            'Copy Summary': 'Copy Summary',
+            'Open Ordering Form': 'Open Ordering Form'
+          };
+          return (window.AdaraI18n && window.AdaraI18n._dict && window.AdaraI18n._dict[l] && window.AdaraI18n._dict[l][key.toLowerCase().replace(/\s+/g,'_')]) || map[key] || key;
+        }
+      }catch(e){}
+      return key;
+    };
+
+    const clearBtn = document.createElement('button'); clearBtn.className='btn'; clearBtn.textContent=t('Clear');
     clearBtn.addEventListener('click', () => { clear(); render(container); });
     const copyBtn = document.createElement('button'); copyBtn.className='btn btn--secondary'; copyBtn.textContent='Copy Summary';
     copyBtn.addEventListener('click', () => { copyToClipboard(cartSummary()); });
-    const openFormBtn = document.createElement('button'); openFormBtn.className='btn btn--primary'; openFormBtn.textContent='Open Ordering Form';
+    const openFormBtn = document.createElement('button'); openFormBtn.className='btn btn--primary'; openFormBtn.textContent=t('Open Ordering Form');
     openFormBtn.addEventListener('click', () => { window.open(orderingFormUrlWithSummary(), '_blank'); });
     actions.appendChild(clearBtn); actions.appendChild(copyBtn); actions.appendChild(openFormBtn);
     container.appendChild(actions);
@@ -82,8 +101,25 @@
   function orderingFormUrlWithSummary(){
     // Use the existing Google Form URL (embed) and add a fallback text via URL param (not ideal but helpful)
     const base = 'https://forms.gle/aoQkRM8kt3a92Law5';
-    const summary = encodeURIComponent(cartSummary());
-    return base + '?entry=cart_summary&summary=' + summary;
+    const summary = cartSummary();
+    // If a prefill mapping is provided, construct a Google Form prefill URL using entry IDs
+    if(window.SimpleCart && window.SimpleCart._prefillMap){
+      const map = window.SimpleCart._prefillMap; // { fieldName: 'entry.123456' }
+      const params = new URLSearchParams();
+      // populate mapped fields
+      Object.keys(map).forEach(k => {
+        try{
+          const id = map[k];
+          if(!id) return;
+          if(k === 'cart_summary') params.append(id, summary);
+          else params.append(id, String(map[k+'_value'] || ''));
+        }catch(e){}
+      });
+      const q = params.toString();
+      return q ? (base + (base.includes('?') ? '&' : '?') + q) : base;
+    }
+    // fallback: append a readable summary param
+    return base + '?summary=' + encodeURIComponent(summary);
   }
 
   function copyToClipboard(text){
@@ -93,7 +129,7 @@
   }
 
   // expose global helpers
-  window.SimpleCart = { addItem, removeItem, updateQty, clear, getCart, render, cartSummary };
+  window.SimpleCart = { addItem, removeItem, updateQty, clear, getCart, render, cartSummary, setFormPrefillMap: (m)=>{ window.SimpleCart._prefillMap = m; } };
 
   // if ordering page is loaded with ?add=... then add that item
   try{
