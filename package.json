@@ -1,0 +1,15 @@
+{
+  "name": "alariadynamics.co",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "link-check": "node ./scripts/link-check.js",
+    "http-check": "node ./scripts/http-check.js",
+    "canonicalize": "node ./scripts/canonicalize-links.js",
+    "prefix-gh-pages": "node ./scripts/prefix-gh-pages-path.js",
+    "prefix-home": "node ./scripts/prefix-home-root.js"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
