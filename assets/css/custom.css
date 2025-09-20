@@ -21,7 +21,40 @@ body{font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; ma
 	z-index: 0;
 	background-image: url('/alariadynamics.co/assets/img/Heading.png');
 	background-size: cover;
-	background-position: absolute;
+	background-position: center center;
+	min-height: 64vh;
+}
+
+/* overlay for contrast */
+.feature-hero::before{
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.45) 100%);
+}
+
+.feature-hero .feature-inner{
+	position: relative;
+	z-index: 2; /* above overlay */
+	display: flex;
+	gap: 24px;
+	align-items: center;
+	justify-content: space-between;
+	padding: 48px 0;
+}
+
+.feature-hero .feature-copy{position:relative;z-index:2;padding:24px 0;max-width:720px;margin-left:0}
+.feature-hero .feature-copy h2{font-size:56px;margin:0 0 14px 0;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;line-height:1}
+.feature-hero .feature-copy .lede{font-size:18px;opacity:0.95;margin:0}
+
+.feature-hero .feature-side{width:300px;padding:12px 0;text-align:right}
+.feature-hero .feature-side h3{margin:0 0 6px 0;font-size:18px}
+.feature-hero .feature-side .meta{font-size:14px;opacity:0.9}
+
+@media (max-width:1000px){
+	.feature-hero .feature-inner{flex-direction:column;align-items:flex-start}
+	.feature-hero .feature-side{width:100%;text-align:left}
 }
 
 .feature-hero .feature-copy{position:relative;z-index:2;padding:64px 48px;max-width:720px;margin-left:6%;}
