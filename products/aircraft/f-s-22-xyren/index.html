@@ -6,7 +6,8 @@
     <title>F/S-22 Xyren — Alaria Dynamics</title>
     <meta name="description" content="F/S-22 Xyren — fifth-generation multirole stealth fighter by Alaria Dynamics. Advanced sensors, supersonic performance, and networked operations.">
     <link rel="icon" type="image/svg+xml" href="../../../assets/img/favicon.svg">
-    <link rel="stylesheet" href="../../../assets/css/site.css">
+  <link rel="stylesheet" href="../../../assets/css/site.css">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -58,11 +59,13 @@
         <div class="product-media interactive-viewer">
           <div class="interactive-main" style="text-align:center;color:#dfeeff;">
             <img src="../../../assets/img/FS-22.webp" alt="F/S-22 Xyren - profile" id="viewer-main" style="max-width:520px;">
+            <model-viewer id="viewer-main-3d" src="../../../assets/img/F152.glb" poster="../../../assets/img/FS-22.webp" alt="F/S-22 3D model" style="max-width:520px;display:none;" camera-controls ar scale="1" loading="lazy"></model-viewer>
           </div>
           <div style="text-align:center;margin-top:8px;font-size:13px;opacity:0.85;">Click thumbnails to switch views</div>
           <div class="interactive-thumbs" style="justify-content:center;margin-top:8px;">
-            <img src="../../../assets/img/FS-22.webp" data-src="../../../assets/img/FS-22.webp" alt="F/S-22 thumbnail" loading="lazy">
-            <img src="../../../assets/img/placeholder.svg" data-src="../../../assets/img/placeholder.svg" alt="Alternate view thumbnail" loading="lazy">
+            <img src="../../../assets/img/FS-22.webp" data-type="image" data-src="../../../assets/img/FS-22.webp" alt="F/S-22 thumbnail" loading="lazy">
+            <img src="../../../assets/img/placeholder.svg" data-type="image" data-src="../../../assets/img/placeholder.svg" alt="Alternate view thumbnail" loading="lazy">
+            <img src="../../../assets/img/FS-22.webp" data-type="model" data-src="../../../assets/img/F152.glb" alt="F/S-22 3D view" loading="lazy">
           </div>
         </div>
         <aside class="product-specs">
