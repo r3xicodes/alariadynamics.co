@@ -2,34 +2,24 @@
 :root{--accent:#7b2be2}
 body{font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin:0;}
 
-/* Hero / heading styles inspired by Lockheed Martin layout */
-.hero {
-	position:relative;
-	color:#fff;
+/* Feature hero (Lockheed-like) */
+.feature-hero {
+	position: relative;
+	color: #fff;
+	padding: 80px 0;
+	overflow: hidden;
 }
-.hero-bg{
-	background-image: url('/alariadynamics.co/assets/img/Heading.png');
-	background-size: cover;
-	background-position: center right;
-	position:absolute;
-	inset:0;
-	filter: saturate(0.95) contrast(1.05) brightness(0.45);
-	z-index:0;
+.feature-hero .feature-media{
+	position: absolute;inset:0;z-index:0;background-image:url('/alariadynamics.co/assets/img/Heading.png');background-size:cover;background-position:center right;filter:brightness(0.45) contrast(1.05);
 }
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.0) 100%);z-index:1}
-.hero .hero-content{position:relative;z-index:2;padding:80px 40px;display:flex;align-items:center;gap:40px}
-.hero .hero-content h1{font-size:48px;letter-spacing:2px;margin:0 0 12px 0;text-transform:uppercase;font-weight:800}
-.hero .hero-content p{max-width:600px;font-size:18px;opacity:0.95}
-.hero .hero-cta{margin-top:18px}
-.hero .btn{background:var(--accent);color:#fff;padding:12px 22px;border-radius:4px;text-decoration:none}
-
-/* Right-side tagline block */
-.hero-tagline{margin-left:auto;text-align:right;max-width:360px}
-.hero-tagline h3{font-size:36px;margin:0 0 8px 0;font-weight:800}
-.hero-tagline p{font-size:16px;opacity:0.9}
+.feature-hero .feature-copy{position:relative;z-index:2;padding:60px 30px;max-width:640px}
+.feature-hero .feature-copy h2{font-size:36px;margin:0 0 12px 0;text-transform:uppercase;letter-spacing:1px}
+.feature-hero .feature-copy p{font-size:18px;line-height:1.5}
+.feature-hero .btn{background:var(--accent);color:#fff;padding:10px 18px;border-radius:4px;text-decoration:none}
+.feature-hero .feature-media img{display:none}
 
 @media (max-width:900px){
-	.hero .hero-content{flex-direction:column;align-items:flex-start;padding:40px}
-	.hero-tagline{text-align:left;margin-left:0}
-	.hero .hero-content h1{font-size:32px}
+	.feature-hero{padding:40px 0}
+	.feature-hero .feature-copy{padding:20px}
+	.feature-hero .feature-copy h2{font-size:24px}
 }
