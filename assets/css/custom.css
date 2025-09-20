@@ -4,10 +4,16 @@ body{font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; ma
 
 /* Feature hero (Lockheed-like) */
 .feature-hero {
+	/* full-bleed: span the full viewport width and escape the centered container */
 	position: relative;
 	color: #fff;
-	padding: 80px 0;
+	padding: 0; /* we'll control internal spacing on the copy */
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	width: 100vw;
 	overflow: hidden;
+	min-height: 64vh; /* taller hero */
+	display:flex;align-items:center;
 }
 .feature-hero .feature-media{
 	position: relative;
@@ -18,7 +24,7 @@ body{font-family:system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; ma
 	background-position: absolute;
 }
 
-.feature-hero .feature-copy{position:relative;z-index:2;padding:80px 30px;max-width:720px;margin-left:6%;}
+.feature-hero .feature-copy{position:relative;z-index:2;padding:64px 48px;max-width:720px;margin-left:6%;}
 .feature-hero .feature-copy h2{font-size:56px;margin:0 0 14px 0;text-transform:uppercase;letter-spacing:2px;font-weight:800;line-height:0.95}
 .feature-hero .feature-copy p{font-size:20px;line-height:1.6;opacity:0.95}
 .feature-hero .btn{background:var(--accent);color:#fff;padding:14px 22px;border-radius:4px;text-decoration:none;font-weight:700;display:inline-block}
